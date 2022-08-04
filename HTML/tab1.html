@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<script src="table2excel.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+
+<title>MONITOR TAB</title>
+</head>
+<body>
+<p style="text-align:center; font-size:60px; margin-top:2%; color: brown;">Manage User Board</p>
+<div class="tab-content"> 
+       
+        <button type="button" class="btn btn-success" id="downExcel">Export to Excel</button>
+        <table class="table-bordered" id="lock">        
+            <thead>
+                <tr>
+                  <th>ID</th>                  
+                  <th>Name</th>
+                  <th>ID User</th>
+                  <th>Check In</th>
+                  <th>Check Out</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <th>1</th>
+                  <th id="name1">Truong Dang Nhat Quynh</th>
+                  <td id="id1">19146020</td>
+                  <td id="ti1"></td>    
+                  <td id="to1"></td>                     
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <th id="name2">Vu Trong Bang</th>
+                  <td id="id2">19146159</td>  
+                  <td id="ti2"></td>    
+                  <td id="to2"></td>                
+                </tr>  
+                <tr>
+                    <th>3</th>
+                    <th id="name3">Bach Quang Phuoc</th>
+                    <td id="id3">19146159</td>  
+                    <td id="ti3"></td>    
+                    <td id="to3"></td>                
+                  </tr>  
+                  <tr>
+                    <th>4</th>
+                    <th id="name4">Truong Van Duc</th>
+                    <td id="id4">19146159</td>  
+                    <td id="ti4"></td>    
+                    <td id="to4"></td>                
+                  </tr>  
+                  <tr>
+                    <th>5</th>
+                    <th id="name5">Hoang Duc Hoa</th>
+                    <td id="id5">19146159</td>  
+                    <td id="ti5"></td>    
+                    <td id="to5"></td>                
+                  </tr>                           
+            </tbody>            
+        </table>                    
+</div> 
+
+  <a href="main.html"class="pre">Go Home</a>
+
+<script>
+    document.getElementById('downExcel').addEventListener('click', function()
+    {
+    var table2excel = new Table2Excel();
+    table2excel.export(document.querySelectorAll("#lock"));    
+    });
+
+
+  $(document).ready(function(){
+
+    readRfid();
+  });
+  function readRfid(){
+    // gui http request xuong server
+    $.post("readRfid.php",
+    function(data){
+        // doc gia tri tu server gui len
+        var name1 = data[0].name;  var mssv1 = data[0].id; var tin1 = data[0].tin;  var tout1 = data[0].tout;
+        var name2 = data[1].name;  var mssv2 = data[1].id; var tin2 = data[1].tin;  var tout2 = data[1].tout;
+        var name3 = data[2].name;  var mssv3 = data[2].id; var tin3 = data[2].tin;  var tout3 = data[2].tout;
+        var name4 = data[3].name;  var mssv4 = data[3].id; var tin4 = data[3].tin;  var tout4 = data[3].tout;
+        var name5 = data[4].name;  var mssv5 = data[4].id; var tin5 = data[4].tin;  var tout5 = data[4].tout;
+        
+        document.getElementById("name1").innerHTML = name1;
+        document.getElementById("id1").innerHTML = mssv1;
+        document.getElementById("ti1").innerHTML = tin1;
+        document.getElementById("to1").innerHTML = tout1;
+
+        document.getElementById("name2").innerHTML = name2;
+        document.getElementById("id2").innerHTML = mssv2;
+        document.getElementById("ti2").innerHTML = tin2;
+        document.getElementById("to2").innerHTML = tout2;
+
+        document.getElementById("name3").innerHTML = name3;
+        document.getElementById("id3").innerHTML = mssv3;
+        document.getElementById("ti3").innerHTML = tin3;
+        document.getElementById("to3").innerHTML = tout3;
+
+        document.getElementById("name4").innerHTML = name4;
+        document.getElementById("id4").innerHTML = mssv4;
+        document.getElementById("ti4").innerHTML = tin4;
+        document.getElementById("to4").innerHTML = tout4;
+
+        document.getElementById("name5").innerHTML = name5;
+        document.getElementById("id5").innerHTML = mssv5;
+        document.getElementById("ti5").innerHTML = tin5;
+        document.getElementById("to5").innerHTML = tout5;       
+    }) ;
+  } setInterval(readRfid,1000);
+
+</script>
+
+</body>
+
+

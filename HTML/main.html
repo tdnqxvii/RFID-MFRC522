@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MANAGE SYSTEM</title>
+	<link rel="stylesheet" href="main.css" />
+</head>
+<body>
+	<div class="app">
+		<div class="menu-toggle">
+			<div class="hamburger">
+				<span></span>
+			</div>
+		</div>
+
+		<aside class="sidebar">
+			<h3>Menu</h3>
+			
+			<nav class="menu">
+				<a href="#" class="menu-item">Home</a><br>
+				<a href="tab1.html" class="menu-item">Attendance Table</a><br>
+				<a href="tab2.html" class="menu-item">Support User</a><br>				
+			</nav>
+
+		</aside>
+
+		<main class="content">
+			<h1 style="font-size: 80px; text-align: center;">Welcome, Our Website</h1>
+			<p style="font-size: 40px; color:blue">Project Embedded System and IoT</p>
+
+			<table class="table-bordered">        
+				<thead>
+					<tr>                  
+					  <th scope="col">Name</th>
+					  <th scope="col">ID Student</th>				
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					  <th scope="row">Truong Dang Nhat Quynh</th>
+					  <td>19146020</td>					                 
+					</tr>
+					<tr>
+					  <th scope="row">Vu Trong Bang</th>
+					  <td>19146159</td>  					            
+					</tr>  
+					<tr>
+						<th scope="row">Bach Quang Phuoc</th>
+						<td>18146192</td>  					            
+					  </tr>		
+				</tbody>            
+			</table>      
+		</main>
+	</div>
+
+	<script>
+		const menu_toggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('.sidebar');
+
+		menu_toggle.addEventListener('click', () => {
+			menu_toggle.classList.toggle('is-active');
+			sidebar.classList.toggle('is-active');
+		});
+	</script>
+</body>
+</html>
